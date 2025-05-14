@@ -3,7 +3,7 @@ vcpkg_from_gitlab(
 	OUT_SOURCE_PATH SOURCE_PATH
 	REPO sfcgal/SFCGAL
 	REF "v${VERSION}"
-	SHA512 c22dcb67cd79e31361e02164f6054cdcf64b341fb95d63b5082bf71cf5fccb310304826c554c60a0c8f0bdf3369515de56d41309b835133076133a908e3cf768
+	SHA512 be72b10cc9d96b3abbc8e54de98fdbf3abf8fd826aa4efccc606fbef5139b81b7347631f03c3d3bf343ca0797941d3fff71824e0f2841e6a7d52373011338df6
 	HEAD_REF master
 	)
 
@@ -19,8 +19,8 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 
-vcpkg_cmake_config_fixup(CONFIG_PATH bin/sfcgal-config)
-vcpkg_fixup_pkgconfig()
+vcpkg_cmake_config_fixup()
+set(VCPKG_POLICY_SKIP_MISPLACED_CMAKE_FILES_CHECK enabled)
 
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include)
 
