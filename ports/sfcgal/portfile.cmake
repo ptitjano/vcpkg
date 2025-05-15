@@ -16,13 +16,13 @@ vcpkg_cmake_configure(
 	"-DSFCGAL_USE_STATIC_LIBS=${SFCGAL_USE_STATIC_LIBS}"
 	-DBUILD_TESTING=OFF
 	)
-
 vcpkg_cmake_install()
-
-vcpkg_cmake_config_fixup()
-set(VCPKG_POLICY_SKIP_MISPLACED_CMAKE_FILES_CHECK enabled)
+vcpkg_fixup_pkgconfig()
+vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/SFCGAL)
 
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include)
+
+file(REMOVE "${CURRENT_PACKAGES_DIR}/bin/sfcgal-config" "${CURRENT_PACKAGES_DIR}/debug/bin/sfcgal-config")
 
 if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
   file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/bin" "${CURRENT_PACKAGES_DIR}/bin")
